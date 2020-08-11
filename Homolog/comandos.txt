@@ -1,1 +1,3 @@
-python 
+python manage.py runserver
+
+(Fazendo aula 27)
