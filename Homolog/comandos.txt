@@ -1,1 +1,13 @@
 python manage.py runserver
+python manage.py startapp $app
+django-admin startproject $projectname
+
+
+git config --global user.name
+git config --global user.email
+
+git stash
+
+git log
+
+git checkout $commit_string
