@@ -11,3 +11,9 @@ git stash
 git log
 
 git checkout $commit_string
+
+pip install pillow
+
+python manage.py migrate
+
+python manage.py makemigrations
