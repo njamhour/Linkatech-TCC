@@ -1,5 +1,9 @@
 Tricolor
-<br>
+{% load static %}
+
+<a href="{% static 'portfolio/teste.pdf' %}">Resume</a>
+
+<img src="{% static 'portfolio/images.jpeg' %}">
 
 {% for project in projects %}
 
