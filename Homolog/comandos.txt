@@ -21,3 +21,10 @@ python manage.py makemigrations
 python manage.py createsuperuser
 
 python manage.py changepassword $usuario
+
+
+#####
+
+django-admin startproject myapi
+cd myapi
+python manage.py startapp core
