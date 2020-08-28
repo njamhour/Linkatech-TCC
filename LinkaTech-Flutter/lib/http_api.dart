@@ -16,6 +16,7 @@ class LoginApi {
       var response = await http.post(url,
           headers: {"Content-Type": "application/json"}, body: body);
       print("${response.statusCode}");
+      print("${response.body}");
 
       Map mapResponse = json.decode(response.body);
 

@@ -28,3 +28,5 @@ python manage.py changepassword $usuario
 django-admin startproject myapi
 cd myapi
 python manage.py startapp core
+
+python manage.py drf_create_token admin

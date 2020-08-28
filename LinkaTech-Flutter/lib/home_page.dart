@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:linka_tech/tipo_pisada.dart';
+import 'package:linka_tech/usuario.dart';
+// import 'package:linka_tech/tipo_pisada.dart';
 
 class HomePage extends StatelessWidget {
   @override
@@ -15,7 +16,7 @@ class HomePage extends StatelessWidget {
   _body() {
     return Center(
       child: Text(
-        "LINKATECH",
+        "OK",
         style: TextStyle(
           fontSize: 20,
         ),
