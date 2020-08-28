@@ -6,6 +6,26 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        title: Text("ENTROU!"),
+      ),
+      body: _body(),
+    );
+  }
+
+  _body() {
+    return Center(
+      child: Text(
+        "LINKATECH",
+        style: TextStyle(
+          fontSize: 20,
+        ),
+      ),
+    );
+  }
+}
+/*Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
         backgroundColor: Colors.white,
         title: Center(
         ),
@@ -104,4 +124,4 @@ class HomePage extends StatelessWidget {
       ),
     );
   }      
-}
+}*/
