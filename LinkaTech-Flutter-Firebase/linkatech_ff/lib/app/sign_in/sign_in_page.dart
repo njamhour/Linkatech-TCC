@@ -1,5 +1,6 @@
 // import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:linkatech_ff/app/sign_in/email_sign_in_page.dart';
 import 'package:linkatech_ff/app/sign_in/sign_in_button.dart';
 import 'package:linkatech_ff/app/sign_in/social_sign_in_button.dart';
 import 'package:linkatech_ff/services/auth.dart';
@@ -44,6 +45,17 @@ class SignInPage extends StatelessWidget {
     }
   }
 
+  void _signInWithEmail(BuildContext context) {
+    Navigator.of(context).push(
+      MaterialPageRoute<void>(
+        fullscreenDialog: true,
+        builder: (context) => EmailSignInPage(
+          auth: auth,
+        ),
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -51,12 +63,12 @@ class SignInPage extends StatelessWidget {
         title: Text('LinkaTech'),
         elevation: 2.0,
       ),
-      body: _buildContent(),
+      body: _buildContent(context),
       backgroundColor: Colors.grey[200],
     );
   }
 
-  Widget _buildContent() {
+  Widget _buildContent(BuildContext context) {
     return Padding(
       // color: Colors.yellow,
       padding: EdgeInsets.all(16.0),
@@ -93,7 +105,7 @@ class SignInPage extends StatelessWidget {
             text: 'Email',
             textColor: Colors.white,
             color: Colors.teal[700],
-            onPressed: () {},
+            onPressed: () => _signInWithEmail(context),
           ),
           SizedBox(height: 8.0),
           SignInButton(
