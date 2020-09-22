@@ -9,16 +9,16 @@ import 'package:linkatech_ff/services/auth.dart';
 class SignInPage extends StatelessWidget {
   SignInPage({
     @required this.auth,
-    @required this.onSignIn,
+    // @required this.onSignIn,
   });
-  final Function(User) onSignIn;
+  // final Function(User) onSignIn;
   final AuthBase auth;
 
   Future<void> _signInAnonimo() async {
     try {
-      User user = await auth.signInAnonimo();
+      await auth.signInAnonimo();
       // print('${authResult.user.uid}');
-      onSignIn(user);
+      // onSignIn(user);
     } catch (e) {
       print(e.toString());
     }

@@ -5,16 +5,16 @@ import 'package:linkatech_ff/services/auth.dart';
 class HomePage extends StatelessWidget {
   HomePage({
     @required this.auth,
-    @required this.onSignOut,
+    // @required this.onSignOut,
   });
-  final VoidCallback onSignOut;
+  // final VoidCallback onSignOut;
   final AuthBase auth;
 
   Future<void> _signOutAnonimo() async {
     try {
       // await FirebaseAuth.instance.signOut();
       await auth.signOut();
-      onSignOut();
+      // onSignOut();
       // print('${authResult.user.uid}');
     } catch (e) {
       print(e.toString());
