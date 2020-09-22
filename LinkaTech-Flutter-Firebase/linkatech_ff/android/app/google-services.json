@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "355349685192",
+    "firebase_url": "https://linkatech-firebase.firebaseio.com",
+    "project_id": "linkatech-firebase",
+    "storage_bucket": "linkatech-firebase.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:355349685192:android:d07539e8dc051a4c61d6fd",
+        "android_client_info": {
+          "package_name": "com.example.linkatech_ff"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "355349685192-sr6p428vs0qda50mkv2qsmgoaool8bkp.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.linkatech_ff",
+            "certificate_hash": "87222b7f912cf92cf218e102c86c590e192f826e"
+          }
+        },
+        {
+          "client_id": "355349685192-4hqm0n678rrqgshjjs9i6n624pe5ifnv.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAKVk2sRWQchqAnRroPJyEOH8IUqHKS3tA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "355349685192-4hqm0n678rrqgshjjs9i6n624pe5ifnv.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
