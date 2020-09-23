@@ -1,6 +1,9 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:linkatech_ff/app/sign_in/validators.dart';
 import 'package:linkatech_ff/common_widgets/form_submit_button.dart';
+import 'package:linkatech_ff/common_widgets/platform_alert_dialog.dart';
 import 'package:linkatech_ff/services/auth.dart';
 
 enum EmailSignInFormType { signIn, register }
@@ -41,7 +44,12 @@ class _EmailSignInFormState extends State<EmailSignInForm> {
       }
       Navigator.of(context).pop();
     } catch (e) {
-      print(e.toString());
+      // print(e.toString());
+      PlatformAlertDialog(
+        title: 'Falha ao acessar',
+        content: e.toString(),
+        defaultActionText: 'OK',
+      ).show(context);
     } finally {
       setState(() {
         _isLoading = false;

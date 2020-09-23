@@ -1,5 +1,6 @@
 // import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:linkatech_ff/common_widgets/platform_alert_dialog.dart';
 import 'package:linkatech_ff/services/auth.dart';
 
 class HomePage extends StatelessWidget {
@@ -21,6 +22,18 @@ class HomePage extends StatelessWidget {
     }
   }
 
+  Future<void> _confirmSignOut(BuildContext context) async {
+    final didRequestSignOut = await PlatformAlertDialog(
+      title: 'Sair',
+      content: 'Confirma logoff?',
+      cancelActionText: 'Cancelar',
+      defaultActionText: 'Sair',
+    ).show(context);
+    if (didRequestSignOut == true) {
+      _signOutAnonimo();
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -35,7 +48,7 @@ class HomePage extends StatelessWidget {
                 color: Colors.white,
               ),
             ),
-            onPressed: _signOutAnonimo,
+            onPressed: () => _confirmSignOut(context),
           ),
         ],
       ),
