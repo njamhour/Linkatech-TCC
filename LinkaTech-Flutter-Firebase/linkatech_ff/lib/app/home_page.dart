@@ -2,21 +2,13 @@
 import 'package:flutter/material.dart';
 import 'package:linkatech_ff/common_widgets/platform_alert_dialog.dart';
 import 'package:linkatech_ff/services/auth.dart';
+import 'package:provider/provider.dart';
 
 class HomePage extends StatelessWidget {
-  HomePage({
-    @required this.auth,
-    // @required this.onSignOut,
-  });
-  // final VoidCallback onSignOut;
-  final AuthBase auth;
-
-  Future<void> _signOutAnonimo() async {
+  Future<void> _signOutAnonimo(BuildContext context) async {
     try {
-      // await FirebaseAuth.instance.signOut();
+      final auth = Provider.of<AuthBase>(context);
       await auth.signOut();
-      // onSignOut();
-      // print('${authResult.user.uid}');
     } catch (e) {
       print(e.toString());
     }
@@ -30,7 +22,7 @@ class HomePage extends StatelessWidget {
       defaultActionText: 'Sair',
     ).show(context);
     if (didRequestSignOut == true) {
-      _signOutAnonimo();
+      _signOutAnonimo(context);
     }
   }
 
