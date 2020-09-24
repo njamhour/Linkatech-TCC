@@ -13,6 +13,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return Provider<AuthBase>(
       builder: (context) => Auth(),
+      /* Verificar documentação, esta descontinuado */
       child: MaterialApp(
         title: 'LinkaTech',
         theme: ThemeData(

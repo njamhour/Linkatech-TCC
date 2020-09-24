@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:linkatech_ff/app/sign_in/validators.dart';
 import 'package:linkatech_ff/common_widgets/form_submit_button.dart';
 import 'package:linkatech_ff/common_widgets/platform_alert_dialog.dart';
+import 'package:linkatech_ff/common_widgets/platform_exception_alert_dialog.dart';
 import 'package:linkatech_ff/services/auth.dart';
 import 'package:provider/provider.dart';
 
@@ -25,6 +27,16 @@ class _EmailSignInFormState extends State<EmailSignInForm> {
   bool _submitted = false;
   bool _isLoading = false;
 
+  @override
+  void dispose() {
+    // print('dispose executado');
+    _emailController.dispose();
+    _passwordController.dispose();
+    _emailFocusNode.dispose();
+    _passwordFocusNode.dispose();
+    super.dispose();
+  }
+
   // String email;
 
   void _submit() async {
@@ -41,12 +53,11 @@ class _EmailSignInFormState extends State<EmailSignInForm> {
         await auth.createUserInWithEmailAndPassword(_email, _password);
       }
       Navigator.of(context).pop();
-    } catch (e) {
+    } on PlatformException catch (e) {
       // print(e.toString());
-      PlatformAlertDialog(
+      PlatformExceptionAlertDialog(
         title: 'Falha ao acessar',
-        content: e.toString(),
-        defaultActionText: 'OK',
+        exception: e,
       ).show(context);
     } finally {
       setState(() {
