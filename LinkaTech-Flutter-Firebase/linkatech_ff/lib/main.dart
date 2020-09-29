@@ -12,7 +12,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Provider<AuthBase>(
-      builder: (context) => Auth(),
+      create: (context) => Auth(),
       /* Verificar documentação, esta descontinuado */
       child: MaterialApp(
         title: 'LinkaTech',
