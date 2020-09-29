@@ -4,8 +4,8 @@ import 'package:flutter/foundation.dart';
 import 'package:linkatech_ff/app/sign_in/email_sign_in_model.dart';
 import 'package:linkatech_ff/services/auth.dart';
 
-class EmailSignInBloc {
-  EmailSignInBloc({
+class EmailSignInChangeModel {
+  EmailSignInChangeModel({
     @required this.auth,
   });
   final AuthBase auth;
