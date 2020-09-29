@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:linkatech_ff/app/sign_in/email_sign_in_model.dart';
 import 'package:linkatech_ff/app/sign_in/validators.dart';
 import 'package:linkatech_ff/common_widgets/form_submit_button.dart';
 import 'package:linkatech_ff/common_widgets/platform_alert_dialog.dart';
@@ -7,14 +8,14 @@ import 'package:linkatech_ff/common_widgets/platform_exception_alert_dialog.dart
 import 'package:linkatech_ff/services/auth.dart';
 import 'package:provider/provider.dart';
 
-enum EmailSignInFormType { signIn, register }
-
-class EmailSignInForm extends StatefulWidget with EmailAndPasswordValidators {
+class EmailSignInFormStateful extends StatefulWidget
+    with EmailAndPasswordValidators {
   @override
-  _EmailSignInFormState createState() => _EmailSignInFormState();
+  _EmailSignInFormStatefulState createState() =>
+      _EmailSignInFormStatefulState();
 }
 
-class _EmailSignInFormState extends State<EmailSignInForm> {
+class _EmailSignInFormStatefulState extends State<EmailSignInFormStateful> {
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
   final FocusNode _emailFocusNode = FocusNode();
@@ -39,7 +40,7 @@ class _EmailSignInFormState extends State<EmailSignInForm> {
 
   // String email;
 
-  void _submit() async {
+  Future<void> _submit() async {
     setState(() {
       _submitted = true;
       _isLoading = true;
