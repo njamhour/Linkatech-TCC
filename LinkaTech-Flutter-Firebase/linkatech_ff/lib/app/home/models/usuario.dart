@@ -1,17 +1,22 @@
 import 'package:flutter/foundation.dart';
 
-class Temp {
-  Temp({@required this.nome, @required this.sobrenome});
+class Usuario {
+  Usuario({@required this.id, @required this.nome, @required this.sobrenome});
+  final String id;
   final String nome;
   final String sobrenome;
 
-  factory Temp.fromMap(Map<String, dynamic> data) {
+  factory Usuario.fromMap(Map<String, dynamic> data, String documentId) {
     if (data == null) {
       return null;
     }
     final String nome = data['nome'];
     final String sobrenome = data['sobrenome'];
-    return Temp(nome: nome, sobrenome: sobrenome);
+    return Usuario(
+      id: documentId,
+      nome: nome,
+      sobrenome: sobrenome,
+    );
   }
 
   Map<String, dynamic> toMap() {

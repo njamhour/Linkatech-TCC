@@ -1,14 +1,14 @@
 // import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:linkatech_ff/app/home/models/temp.dart';
+import 'package:linkatech_ff/app/home/models/usuario.dart';
+import 'package:linkatech_ff/app/home/usuarios/edit_user_page.dart';
+import 'package:linkatech_ff/app/home/usuarios/user_list_tile.dart';
 import 'package:linkatech_ff/common_widgets/platform_alert_dialog.dart';
-import 'package:linkatech_ff/common_widgets/platform_exception_alert_dialog.dart';
 import 'package:linkatech_ff/services/auth.dart';
 import 'package:linkatech_ff/services/database.dart';
 import 'package:provider/provider.dart';
 
-class HomePage extends StatelessWidget {
+class UsersPage extends StatelessWidget {
   Future<void> _signOutAnonimo(BuildContext context) async {
     try {
       final auth = Provider.of<AuthBase>(context);
@@ -30,10 +30,10 @@ class HomePage extends StatelessWidget {
     }
   }
 
-  Future<void> _createTemp(BuildContext context) async {
+/*  Future<void> _createUser(BuildContext context) async {
     try {
       final database = Provider.of<Database>(context);
-      await database.createTemp(Temp(nome: 'Alberto', sobrenome: 'Silva'));
+      await database.setUser(User(nome: 'Alberto', sobrenome: 'Silva'));
     } on PlatformException catch (e) {
       PlatformExceptionAlertDialog(
         title: 'Falha',
@@ -41,7 +41,7 @@ class HomePage extends StatelessWidget {
       ).show(context);
     }
   }
-
+*/
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -63,19 +63,24 @@ class HomePage extends StatelessWidget {
       body: _buildContents(context),
       floatingActionButton: FloatingActionButton(
         child: Icon(Icons.add),
-        onPressed: () => _createTemp(context),
+        onPressed: () => EditUserPage.show(context),
       ),
     );
   }
 
   Widget _buildContents(BuildContext context) {
     final database = Provider.of<Database>(context);
-    return StreamBuilder<List<Temp>>(
-      stream: database.tempsStream(),
+    return StreamBuilder<List<Usuario>>(
+      stream: database.usersStream(),
       builder: (context, snapshot) {
         if (snapshot.hasData) {
-          final temps = snapshot.data;
-          final children = temps.map((temp) => Text(temp.nome)).toList();
+          final users = snapshot.data;
+          final children = users
+              .map((usuario) => UserListTile(
+                    user: usuario,
+                    onTap: () => EditUserPage.show(context, usuario: usuario),
+                  ))
+              .toList();
           return ListView(children: children);
         }
         if (snapshot.hasError) {

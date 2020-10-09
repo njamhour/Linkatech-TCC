@@ -1,12 +1,16 @@
-import 'package:flutter/foundation.dart';
-import 'package:linkatech_ff/app/home/models/temp.dart';
+import 'dart:async';
+
+import 'package:linkatech_ff/app/home/models/usuario.dart';
 import 'package:linkatech_ff/services/api_path.dart';
 import 'package:linkatech_ff/services/firestore_service.dart';
+import 'package:meta/meta.dart';
 
 abstract class Database {
-  Future<void> createTemp(Temp temp);
-  Stream<List<Temp>> tempsStream();
+  Future<void> setUser(Usuario usuario);
+  Stream<List<Usuario>> usersStream();
 }
+
+String documentIdFromCurrentDate() => DateTime.now().toIso8601String();
 
 class FirestoreDatabase implements Database {
   FirestoreDatabase({@required this.uid}) : assert(uid != null);
@@ -14,11 +18,12 @@ class FirestoreDatabase implements Database {
 
   final _service = FirestoreService.instance;
 
-  Future<void> createTemp(Temp temp) async => await _service.setData(
-        path: APIPath.temp(uid, 'temporario_123'),
-        data: temp.toMap(),
+  Future<void> setUser(Usuario usuario) async => await _service.setData(
+        path: APIPath.usuario(uid, usuario.id),
+        data: usuario.toMap(),
       );
 
-  Stream<List<Temp>> tempsStream() => _service.collectionsStream(
-      path: APIPath.temps(uid), builder: (data) => Temp.fromMap(data));
+  Stream<List<Usuario>> usersStream() => _service.collectionsStream(
+      path: APIPath.usuarios(uid),
+      builder: (data, documentId) => Usuario.fromMap(data, documentId));
 }
