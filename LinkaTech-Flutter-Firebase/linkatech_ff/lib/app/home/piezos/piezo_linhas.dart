@@ -38,7 +38,7 @@ class PiezoLinhas extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.red,
-        title: Text('MALDIÇÃO'),
+        title: Text('Teste'),
       ),
       body: Center(
         child: PiezoLinhasChart(data: data),

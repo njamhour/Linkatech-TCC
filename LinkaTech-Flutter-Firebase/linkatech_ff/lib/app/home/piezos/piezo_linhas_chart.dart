@@ -26,7 +26,7 @@ class PiezoLinhasChart extends StatelessWidget {
           child: Column(
             children: <Widget>[
               Text(
-                'PORCARIA',
+                'Teste2',
                 style: Theme.of(context).textTheme.bodyText2,
               ),
               Expanded(
