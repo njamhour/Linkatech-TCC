@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:math';
 
 import 'package:linkatech_ff/app/home/models/usuario.dart';
 import 'package:linkatech_ff/services/api_path.dart';
@@ -9,12 +10,15 @@ abstract class Database {
   Future<void> deleteUser(Usuario usuario);
   Future<void> setUser(Usuario usuario);
   Stream<List<Usuario>> usersStream();
+  Stream<Usuario> userStream({@required String usuarioId});
 }
 
 String documentIdFromCurrentDate() => DateTime.now().toIso8601String();
+//String teste() => Random.secure().toString();
 
+//String documentIdFromCurrentDate() =>
 class FirestoreDatabase implements Database {
-  FirestoreDatabase({@required this.uid}) : assert(uid != null);
+  FirestoreDatabase({@required this.uid}); //: assert(uid != null);
   final String uid;
 
   final _service = FirestoreService.instance;
@@ -31,4 +35,9 @@ class FirestoreDatabase implements Database {
   Stream<List<Usuario>> usersStream() => _service.collectionsStream(
       path: APIPath.usuarios(uid),
       builder: (data, documentId) => Usuario.fromMap(data, documentId));
+
+  Stream<Usuario> userStream({@required String usuarioId}) =>
+      _service.documentStream(
+          path: APIPath.usuario(uid, usuarioId),
+          builder: (data, documentId) => Usuario.fromMap(data, documentId));
 }

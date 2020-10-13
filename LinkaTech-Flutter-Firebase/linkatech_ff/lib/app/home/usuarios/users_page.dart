@@ -4,6 +4,7 @@ import 'package:flutter/services.dart';
 import 'package:linkatech_ff/app/home/models/usuario.dart';
 import 'package:linkatech_ff/app/home/usuarios/edit_user_page.dart';
 import 'package:linkatech_ff/app/home/usuarios/list_items_builder.dart';
+import 'package:linkatech_ff/app/home/usuarios/piezo_entries_page.dart';
 import 'package:linkatech_ff/app/home/usuarios/user_list_tile.dart';
 import 'package:linkatech_ff/common_widgets/platform_alert_dialog.dart';
 import 'package:linkatech_ff/common_widgets/platform_exception_alert_dialog.dart';
@@ -51,23 +52,22 @@ class UsersPage extends StatelessWidget {
       appBar: AppBar(
         title: Text('Home'),
         actions: <Widget>[
-          FlatButton(
-            child: Text(
-              'Sair',
-              style: TextStyle(
-                fontSize: 18.0,
-                color: Colors.white,
-              ),
-            ),
+          IconButton(
+            icon: Icon(Icons.exit_to_app),
+            color: Colors.white,
             onPressed: () => _confirmSignOut(context),
+          ),
+          IconButton(
+            icon: Icon(Icons.add),
+            color: Colors.white,
+            onPressed: () => EditUserPage.show(
+              context,
+              //database: Provider.of<Database>(context),
+            ),
           ),
         ],
       ),
       body: _buildContents(context),
-      floatingActionButton: FloatingActionButton(
-        child: Icon(Icons.add),
-        onPressed: () => EditUserPage.show(context),
-      ),
     );
   }
 
@@ -85,7 +85,8 @@ class UsersPage extends StatelessWidget {
             onDismissed: (direction) => _delete(context, usuario),
             child: UserListTile(
               usuario: usuario,
-              onTap: () => EditUserPage.show(context, usuario: usuario),
+              // onTap: () => EditUserPage.show(context, usuario: usuario),
+              onTap: () => PiezoEntriesPage.show(context, usuario),
             ),
           ),
         );
