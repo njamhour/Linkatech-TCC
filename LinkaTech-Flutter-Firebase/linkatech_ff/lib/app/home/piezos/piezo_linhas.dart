@@ -1,4 +1,4 @@
-import 'package:flutter/cupertino.dart';
+/*import 'package:flutter/cupertino.dart';
 import 'package:charts_flutter/flutter.dart' as charts;
 import 'package:flutter/material.dart';
 import 'package:linkatech_ff/app/home/piezos/piezo_linhas_chart.dart';
@@ -46,3 +46,4 @@ class PiezoLinhas extends StatelessWidget {
     );
   }
 }
+*/

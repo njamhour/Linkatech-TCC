@@ -26,11 +26,12 @@ class _CarregarDadosFirestore extends State<PiezoPie> {
     );
   }
 
+  // int i = 1;
   Widget _showDrivers() {
     if (querySnapshot != null) {
       return ListView.builder(
         primary: false,
-        itemCount: querySnapshot.documents.length,
+        itemCount: 1,
         padding: EdgeInsets.all(12),
         itemBuilder: (context, i) {
           int total = 0;
@@ -55,6 +56,7 @@ class _CarregarDadosFirestore extends State<PiezoPie> {
               Text(total3.toString()),
               Text(total4.toString()),
               Text(total5.toString()),
+              Text(i.toString()),
             ],
           );
         },
