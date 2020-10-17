@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:linkatech_ff/app/home/cuppertino_home_scaffold.dart';
 import 'package:linkatech_ff/app/home/piezos/piezo_grafico.dart';
 import 'package:linkatech_ff/app/home/piezos/piezo_linhas.dart';
+import 'package:linkatech_ff/app/home/piezos/piezo_linhas_chart.dart';
 import 'package:linkatech_ff/app/home/piezos/piezo_mapa_calor.dart';
 import 'package:linkatech_ff/app/home/piezos/piezo_pie.dart';
 import 'package:linkatech_ff/app/home/tab_items.dart';
@@ -26,7 +27,7 @@ class _HomePageState extends State<HomePage> {
   Map<TabItem, WidgetBuilder> get widgetBuilders {
     return {
       TabItem.home: (_) => UsersPage(),
-      TabItem.linhas: (_) => PiezoLinhas(), //JobsPage(),
+      TabItem.linhas: (_) => PiezoLinhasChart(), //JobsPage(),
       TabItem.pie: (context) => PiezoPie(), //EntriesPage.create(context),
       TabItem.grafico: (_) => PiezoGrafico(), // JobsPage(),
       TabItem.calor: (_) => PiezoMapaCalor(), // AccountPage(),
