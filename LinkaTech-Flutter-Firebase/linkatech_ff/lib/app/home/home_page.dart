@@ -27,7 +27,8 @@ class _HomePageState extends State<HomePage> {
   Map<TabItem, WidgetBuilder> get widgetBuilders {
     return {
       TabItem.home: (_) => UsersPage(),
-      TabItem.linhas: (_) => PiezoLinhasChart(), //JobsPage(),
+      // TabItem.linhas: (_) => PiezoLinhasChart(), //JobsPage(),
+      TabItem.linhas: (_) => MyHomePage(),
       TabItem.pie: (context) => PiezoPie(), //EntriesPage.create(context),
       TabItem.grafico: (_) => PiezoGrafico(), // JobsPage(),
       TabItem.calor: (_) => PiezoMapaCalor(), // AccountPage(),
