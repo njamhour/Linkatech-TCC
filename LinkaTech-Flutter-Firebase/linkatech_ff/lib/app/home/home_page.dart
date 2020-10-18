@@ -28,7 +28,7 @@ class _HomePageState extends State<HomePage> {
     return {
       TabItem.home: (_) => UsersPage(),
       // TabItem.linhas: (_) => PiezoLinhasChart(), //JobsPage(),
-      TabItem.linhas: (_) => MyHomePage(),
+      TabItem.linhas: (_) => PiezoLinhasChart(),
       TabItem.pie: (context) => PiezoPie(), //EntriesPage.create(context),
       TabItem.grafico: (_) => PiezoGrafico(), // JobsPage(),
       TabItem.calor: (_) => PiezoMapaCalor(), // AccountPage(),

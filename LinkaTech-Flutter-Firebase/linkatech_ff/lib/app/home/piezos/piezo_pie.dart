@@ -81,9 +81,16 @@ class _CarregarDadosFirestore extends State<PiezoPie> {
             ),
           ];
 
-          var chart = charts.BarChart(
+          var chart = charts.PieChart(
             series,
             animate: true,
+            behaviors: [
+              new charts.DatumLegend(
+                outsideJustification: charts.OutsideJustification.endDrawArea,
+                horizontalFirst: false,
+                desiredMaxRows: 2,
+              )
+            ],
           );
 
           var chartWidget = Padding(
