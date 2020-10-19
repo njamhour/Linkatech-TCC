@@ -56,11 +56,26 @@ class _CarregarDadosFirestore extends State<PiezoPie> {
           total5 = (total5 / length).ceil();
           int finalTotal = total + total2 + total3 + total4 + total5;
 
-          double porcentoTotal = (total * 100) / finalTotal;
+          /*double porcentoTotal = (total * 100) / finalTotal;
           double porcentoTotal2 = (total2 * 100) / finalTotal;
           double porcentoTotal3 = (total3 * 100) / finalTotal;
           double porcentoTotal4 = (total4 * 100) / finalTotal;
           double porcentoTotal5 = (total5 * 100) / finalTotal;
+          String finalPorcento =
+              'A11 - ' + porcentoTotal.round().toString() + '%';
+
+          String finalPorcentoDois =
+              'A12 - ' + porcentoTotal2.round().toString() + '%';
+
+          String finalPorcentoTres =
+              'A13 - ' + porcentoTotal3.round().toString() + '%';
+
+          String finalPorcentoQuatro =
+              'A14 - ' + porcentoTotal4.round().toString() + '%';
+
+          String finalPorcentoCinco =
+              'A15 - ' + porcentoTotal5.round().toString() + '%';*/
+          // String porcentoTotal = porcentoTotal.toString();
 
           // Widget build(BuildContext context) {
           var data = [
@@ -73,12 +88,14 @@ class _CarregarDadosFirestore extends State<PiezoPie> {
 
           var series = [
             charts.Series(
-              domainFn: (PiezoPieAtributos clickData, __) => clickData.piezo,
-              measureFn: (PiezoPieAtributos clickData, __) => clickData.valor,
-              colorFn: (PiezoPieAtributos clickData, __) => clickData.color,
-              id: 'Teste',
-              data: data,
-            ),
+                domainFn: (PiezoPieAtributos clickData, __) => clickData.piezo,
+                measureFn: (PiezoPieAtributos clickData, __) => clickData.valor,
+                colorFn: (PiezoPieAtributos clickData, __) => clickData.color,
+                id: 'Teste',
+                data: data,
+                labelAccessorFn: (PiezoPieAtributos clickData, __) =>
+                    ((clickData.valor * 100) / finalTotal).round().toString() +
+                    '%'),
           ];
 
           var chart = charts.PieChart(
@@ -89,8 +106,21 @@ class _CarregarDadosFirestore extends State<PiezoPie> {
                 outsideJustification: charts.OutsideJustification.endDrawArea,
                 horizontalFirst: false,
                 desiredMaxRows: 2,
+                cellPadding: new EdgeInsets.only(right: 4.0, bottom: 4.0),
+                entryTextStyle: charts.TextStyleSpec(
+                  color: charts.MaterialPalette.purple.shadeDefault,
+                  fontFamily: 'Georgia',
+                  fontSize: 11,
+                ),
               )
             ],
+            defaultRenderer: new charts.ArcRendererConfig(
+              arcWidth: 100,
+              arcRendererDecorators: [
+                new charts.ArcLabelDecorator(
+                    labelPosition: charts.ArcLabelPosition.inside),
+              ],
+            ),
           );
 
           var chartWidget = Padding(
