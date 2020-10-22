@@ -1,5 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:linkatech_ff/app/home/models/usuario.dart';
 import 'package:linkatech_ff/services/api_path.dart';
 import 'package:charts_flutter/flutter.dart' as charts;
 
@@ -20,6 +22,7 @@ class _CarregarDadosFirestore extends State<PiezoPie> {
   }
 
   QuerySnapshot querySnapshot;
+  // var teste = querySnapshot.documents.data[]
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -63,16 +66,12 @@ class _CarregarDadosFirestore extends State<PiezoPie> {
           double porcentoTotal5 = (total5 * 100) / finalTotal;
           String finalPorcento =
               'A11 - ' + porcentoTotal.round().toString() + '%';
-
           String finalPorcentoDois =
               'A12 - ' + porcentoTotal2.round().toString() + '%';
-
           String finalPorcentoTres =
               'A13 - ' + porcentoTotal3.round().toString() + '%';
-
           String finalPorcentoQuatro =
               'A14 - ' + porcentoTotal4.round().toString() + '%';
-
           String finalPorcentoCinco =
               'A15 - ' + porcentoTotal5.round().toString() + '%';*/
           // String porcentoTotal = porcentoTotal.toString();
@@ -157,9 +156,19 @@ class _CarregarDadosFirestore extends State<PiezoPie> {
 }
 
 getDriverList() async {
+  final FirebaseAuth auth = FirebaseAuth.instance;
+  // final Firestore firestore = Firestore.instance;
+  // Final
+  FirebaseUser user = await auth.currentUser();
+  final userid = user.email;
+  // StreamBuilder<Usuario>(
+  //  stream: database.usuarioID = usuario.id,
+  //  );
+  // const usedId = Firestore.
+  // FirebaseFirestore firestore = FirebaseFirestore.instance;
+
   return await Firestore.instance
-      .collection(
-          '/linkatech/njjamhour@gmail.com/piezos/2020-10-13T07:50:55.914150/piezos')
+      .collection('/linkatech/$userid/piezos/2020-10-13T07:50:55.914150/piezos')
       .getDocuments();
 }
 

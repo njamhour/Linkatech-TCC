@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'dart:math';
 
+import 'package:linkatech_ff/app/home/models/piezo.dart';
 import 'package:linkatech_ff/app/home/models/usuario.dart';
 import 'package:linkatech_ff/services/api_path.dart';
 import 'package:linkatech_ff/services/firestore_service.dart';
@@ -11,6 +12,7 @@ abstract class Database {
   Future<void> setUser(Usuario usuario);
   Stream<List<Usuario>> usersStream();
   Stream<Usuario> userStream({@required String usuarioId});
+  // Stream<Piezo> piezoStream({String usuarioId});
 }
 
 String documentIdFromCurrentDate() => DateTime.now().toIso8601String();

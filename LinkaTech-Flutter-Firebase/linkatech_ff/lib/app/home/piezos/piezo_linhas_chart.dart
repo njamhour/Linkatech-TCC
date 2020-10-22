@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:linkatech_ff/services/api_path.dart';
 import 'package:charts_flutter/flutter.dart' as charts;
@@ -120,9 +121,18 @@ class _CarregarDadosFirestore extends State<PiezoLinhasChart> {
 }
 
 getDriverList() async {
+  final FirebaseAuth auth = FirebaseAuth.instance;
+  // final Firestore firestore = Firestore.instance;
+
+  FirebaseUser user = await auth.currentUser();
+  final userid = user.email;
+
+  // const usedId = Firestore.
+  // FirebaseFirestore firestore = FirebaseFirestore.instance;
+
   return await Firestore.instance
-      .collection(
-          '/linkatech/njjamhour@gmail.com/piezos/2020-10-13T07:50:55.914150/piezos')
+      //.collection('/linkatech/$userid/piezos/2020-10-13T07:50:55.914150/piezos')
+      .collection('/linkatech/$userid/piezos/')
       .getDocuments();
 }
 
