@@ -239,7 +239,7 @@ class _EditUserPageState extends State<EditUserPage> {
         initialValue: _peso,
         validator: (value) =>
             value.isNotEmpty ? null : 'Peso não pode estar vazio',
-        onSaved: (value) => _peso = value,
+        onSaved: (value) => _peso = value + ' KG',
       ),
       DropdownButton<String>(
         hint: Text("Casual ou Profissional?"),

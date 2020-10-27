@@ -4,6 +4,8 @@ import 'package:linkatech_ff/app/home/models/usuario.dart';
 import 'package:linkatech_ff/services/database.dart';
 import 'package:provider/provider.dart';
 
+import 'edit_user_page.dart';
+
 class PiezoEntriesPage extends StatelessWidget {
   const PiezoEntriesPage(
       {Key key, @required this.database, @required this.usuario})
@@ -36,10 +38,26 @@ class PiezoEntriesPage extends StatelessWidget {
               actions: <Widget>[
                 IconButton(
                   icon: Icon(Icons.edit, color: Colors.white),
-                  onPressed: () {},
-                )
+                  onPressed: () =>
+                      EditUserPage(database: database, usuario: usuario),
+                ),
               ],
             ),
+            body: Center(
+              child: ListView(
+                children: <Widget>[
+                  Text('Nome: ' + usuario.nome),
+                  Text('Idade: ' + usuario.idade),
+                  Text('Email: ' + usuario.email),
+                  Text('Altura: ' + usuario.altura),
+                  Text('Genero: ' + usuario.genero),
+                  Text('Peso: ' + usuario.peso),
+                  Text('Tipo:' + usuario.tipo),
+                  Text('Numeração: ' + usuario.numeracao),
+                ],
+              ),
+            ),
+            //Center(child: Column(children: <Widget>[Text(usuario.altura)],),)
           );
         });
   }
