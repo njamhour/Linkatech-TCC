@@ -14,9 +14,10 @@ class MyApp extends StatelessWidget {
     return Provider<AuthBase>(
       create: (context) => Auth(),
       child: MaterialApp(
+        debugShowCheckedModeBanner: false,
         title: 'LinkaTech',
         theme: ThemeData(
-          primarySwatch: Colors.indigo,
+          primarySwatch: Colors.blueGrey,
         ),
         home: LandingPage(),
       ),

@@ -31,15 +31,50 @@ class EditUserPage extends StatefulWidget {
 
 class _EditUserPageState extends State<EditUserPage> {
   final _formKey = GlobalKey<FormState>();
+  final List<String> _numeracao = [
+    "34",
+    "35",
+    "36",
+    "37",
+    "38",
+    "39",
+    "40",
+    "41",
+    "42",
+    "43",
+    "44"
+  ];
+  List<String> _tipo = [
+    "Casual",
+    "Profissional",
+  ];
+  List<String> _genero = [
+    "Masculino",
+    "Feminino",
+    "Outros",
+    "Prefiro não responder",
+  ];
   String _nome;
-  String _sobrenome;
+  String _email;
+  String _idade;
+  String _altura;
+  String _peso;
+  var _generoVal;
+  var _tipoVal;
+  var _numeracaoVal;
 
   @override
   void initState() {
     super.initState();
     if (widget.usuario != null) {
       _nome = widget.usuario.nome;
-      _sobrenome = widget.usuario.sobrenome;
+      _email = widget.usuario.email;
+      _generoVal = widget.usuario.genero;
+      _idade = widget.usuario.idade;
+      _numeracaoVal = widget.usuario.numeracao;
+      _altura = widget.usuario.altura;
+      _peso = widget.usuario.peso;
+      _tipoVal = widget.usuario.tipo;
     }
   }
 
@@ -69,10 +104,15 @@ class _EditUserPageState extends State<EditUserPage> {
         } else {
           final id = widget.usuario?.id ?? documentIdFromCurrentDate();
           final user = Usuario(
-            id: id,
-            nome: _nome,
-            sobrenome: _sobrenome,
-          );
+              id: id,
+              nome: _nome,
+              email: _email,
+              genero: _generoVal,
+              idade: _idade,
+              numeracao: _numeracaoVal,
+              altura: _altura,
+              peso: _peso,
+              tipo: _tipoVal);
           await widget.database.setUser(user);
           Navigator.of(context).pop();
         }
@@ -133,19 +173,91 @@ class _EditUserPageState extends State<EditUserPage> {
   List<Widget> _buildFormChildren() {
     return [
       TextFormField(
-        decoration: InputDecoration(labelText: 'Nome do usuario'),
+        decoration: InputDecoration(labelText: 'Nome'),
         initialValue: _nome,
         validator: (value) =>
             value.isNotEmpty ? null : 'Nome não pode estar vazio',
         onSaved: (value) => _nome = value,
       ),
       TextFormField(
-        decoration: InputDecoration(labelText: 'Sobrenome'),
-        initialValue: _sobrenome,
+        decoration: InputDecoration(labelText: 'Email'),
+        initialValue: _email,
         validator: (value) =>
-            value.isNotEmpty ? null : 'Sobrenome não pode estar vazio',
-        onSaved: (value) => _sobrenome = value,
-      )
+            value.isNotEmpty ? null : 'Email não pode estar vazio',
+        onSaved: (value) => _email = value,
+      ),
+      DropdownButton<String>(
+        hint: Text("Genêro"),
+        value: _generoVal,
+        isDense: true,
+        onChanged: (newValue) {
+          setState(() {
+            _generoVal = newValue;
+          });
+          print(_generoVal);
+        },
+        items: _genero.map((String value) {
+          return DropdownMenuItem<String>(
+            value: value,
+            child: Text(value),
+          );
+        }).toList(),
+      ),
+      TextFormField(
+        decoration: InputDecoration(labelText: 'Idade'),
+        initialValue: _idade,
+        validator: (value) =>
+            value.isNotEmpty ? null : 'Idade não pode estar vazio',
+        onSaved: (value) => _idade = value,
+      ),
+      DropdownButton<String>(
+        hint: Text("Numeração de calçado"),
+        value: _numeracaoVal,
+        isDense: true,
+        onChanged: (newValue) {
+          setState(() {
+            _numeracaoVal = newValue;
+          });
+          print(_numeracaoVal);
+        },
+        items: _numeracao.map((String value) {
+          return DropdownMenuItem<String>(
+            value: value,
+            child: Text(value),
+          );
+        }).toList(),
+      ),
+      TextFormField(
+        decoration: InputDecoration(labelText: 'Altura'),
+        initialValue: _altura,
+        validator: (value) =>
+            value.isNotEmpty ? null : 'Altura não pode estar vazio',
+        onSaved: (value) => _altura = value,
+      ),
+      TextFormField(
+        decoration: InputDecoration(labelText: 'Peso'),
+        initialValue: _peso,
+        validator: (value) =>
+            value.isNotEmpty ? null : 'Peso não pode estar vazio',
+        onSaved: (value) => _peso = value,
+      ),
+      DropdownButton<String>(
+        hint: Text("Casual ou Profissional?"),
+        value: _tipoVal,
+        isDense: true,
+        onChanged: (newValue) {
+          setState(() {
+            _tipoVal = newValue;
+          });
+          print(_tipoVal);
+        },
+        items: _tipo.map((String value) {
+          return DropdownMenuItem<String>(
+            value: value,
+            child: Text(value),
+          );
+        }).toList(),
+      ),
     ];
   }
 }
