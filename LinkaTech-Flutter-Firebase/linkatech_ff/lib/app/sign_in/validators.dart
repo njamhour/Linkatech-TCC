@@ -15,3 +15,5 @@ class EmailAndPasswordValidators {
   final String invalidEmailErrorText = 'Email não pode estar vazio';
   final String invalidPasswordErrorText = 'Senha não pode estar vazio';
 }
+
+// XUXU XAXA SHOSTAKE ME MAMA
