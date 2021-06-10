@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:charts_flutter/flutter.dart' as charts;
+import 'package:linkatech_ff/services/firestore_service.dart';
 
 class PiezoGrafico extends StatefulWidget {
   @override
@@ -40,14 +41,17 @@ class _CarregarDadosFirestore extends State<PiezoGrafico> {
           int total3 = 0;
           int total4 = 0;
           int total5 = 0;
-          int length = querySnapshot.documents.length - 1;
-
+          //int length = querySnapshot.documents.length - 1;
+          int length = querySnapshot.docs.length - 1;
           for (i = 0; i <= length; i++) {
-            total = total + querySnapshot.documents[i].data['A11'];
-            total2 = total2 + querySnapshot.documents[i].data['A12'];
-            total3 = total3 + querySnapshot.documents[i].data['A13'];
-            total4 = total4 + querySnapshot.documents[i].data['A14'];
-            total5 = total5 + querySnapshot.documents[i].data['A15'];
+            //total = total + querySnapshot.documents[i].data['A11'];
+            //              TODO 
+            //verificar como os dados estão chegando
+            total = total + querySnapshot.docs[i].data();
+            // total2 = total2 + querySnapshot.documents[i].data['A12'];
+            // total3 = total3 + querySnapshot.documents[i].data['A13'];
+            // total4 = total4 + querySnapshot.documents[i].data['A14'];
+            // total5 = total5 + querySnapshot.documents[i].data['A15'];
           }
           total = (total / length).ceil();
           total2 = (total2 / length).ceil();
@@ -123,15 +127,20 @@ getDriverList() async {
   final FirebaseAuth auth = FirebaseAuth.instance;
   // final Firestore firestore = Firestore.instance;
 
-  FirebaseUser user = await auth.currentUser();
+
+  // VALIDAR, ESTAVA COM ERRO
+  // FirebaseUser user = await auth.currentUser();
+  var user = auth.currentUser;
   final userid = user.email;
 
   // const usedId = Firestore.
   // FirebaseFirestore firestore = FirebaseFirestore.instance;
 
-  return await Firestore.instance
-      .collection('/linkatech/$userid/piezos/2020-10-13T07:50:55.914150/piezos')
-      .getDocuments();
+ // VERIFICAR COMO TRAZ OS DADOS
+  var builder;
+    return await FirestoreService.instance.collectionsStream(path: '/linkatech/$userid/piezos/2020-10-13T07:50:55.914150/piezos', builder: builder);
+      // .collection('/linkatech/$userid/piezos/2020-10-13T07:50:55.914150/piezos')
+      // .getDocuments();
 }
 
 class PiezoPieAtributos {
