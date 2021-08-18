@@ -1,7 +1,7 @@
 import 'dart:async';
-import 'dart:math';
+//import 'dart:math';
 
-import 'package:linkatech_ff/app/home/models/piezo.dart';
+//import 'package:linkatech_ff/app/home/models/piezo.dart';
 import 'package:linkatech_ff/app/home/models/usuario.dart';
 import 'package:linkatech_ff/services/api_path.dart';
 import 'package:linkatech_ff/services/firestore_service.dart';

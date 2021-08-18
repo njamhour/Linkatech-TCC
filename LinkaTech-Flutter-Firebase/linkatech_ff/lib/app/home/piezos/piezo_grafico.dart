@@ -1,7 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:linkatech_ff/services/api_path.dart';
+//import 'package:linkatech_ff/services/api_path.dart';
 import 'package:charts_flutter/flutter.dart' as charts;
 
 class PiezoGrafico extends StatefulWidget {
@@ -55,13 +55,13 @@ class _CarregarDadosFirestore extends State<PiezoGrafico> {
           total3 = (total3 / length).ceil();
           total4 = (total4 / length).ceil();
           total5 = (total5 / length).ceil();
-          int finalTotal = total + total2 + total3 + total4 + total5;
+          //     int finalTotal = total + total2 + total3 + total4 + total5;
 
-          double porcentoTotal = (total * 100) / finalTotal;
-          double porcentoTotal2 = (total2 * 100) / finalTotal;
-          double porcentoTotal3 = (total3 * 100) / finalTotal;
-          double porcentoTotal4 = (total4 * 100) / finalTotal;
-          double porcentoTotal5 = (total5 * 100) / finalTotal;
+          //    double porcentoTotal = (total * 100) / finalTotal;
+          //    double porcentoTotal2 = (total2 * 100) / finalTotal;
+          //    double porcentoTotal3 = (total3 * 100) / finalTotal;
+          //    double porcentoTotal4 = (total4 * 100) / finalTotal;
+          //    double porcentoTotal5 = (total5 * 100) / finalTotal;
 
           // Widget build(BuildContext context) {
           var data = [
