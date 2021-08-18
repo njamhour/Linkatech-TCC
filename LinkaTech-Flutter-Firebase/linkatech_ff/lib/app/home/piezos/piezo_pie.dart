@@ -1,6 +1,8 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:linkatech_ff/app/home/models/usuario.dart';
+import 'package:linkatech_ff/services/api_path.dart';
 import 'package:charts_flutter/flutter.dart' as charts;
 
 class PiezoPie extends StatefulWidget {
