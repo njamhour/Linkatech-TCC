@@ -66,7 +66,7 @@ class _EmailSignInFormStatefulState extends State<EmailSignInFormStateful> {
     }
     // print(email);
     // print(
-    //    'email: ${_emailController.text}, password: ${_passwordController.text}')
+    //    'email: ${_emailController.text}, password: ${_passwordController.text}');
   }
 
   void _emailEditingComplete() {
