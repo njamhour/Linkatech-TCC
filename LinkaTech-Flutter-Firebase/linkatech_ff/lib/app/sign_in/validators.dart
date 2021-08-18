@@ -19,4 +19,3 @@ class EmailAndPasswordValidators {
 // XUXU XAXA SHOSTAKE ME MAMA
 // Xuxuxu Xaxaxa Tricolor vai acabar
 // LELELELLE
-// Sonic é nois

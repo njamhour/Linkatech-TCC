@@ -1,4 +1,4 @@
-import 'material.dart';
+import 'package:flutter/material.dart';
 
 class ResetPasswordPage extends StatelessWidget {
   @override
@@ -118,4 +118,3 @@ class ResetPasswordPage extends StatelessWidget {
     );
   }
 }
-// OPSOPSSPS
