@@ -54,7 +54,7 @@ class PlatformAlertDialog extends PlatformWidget {
     if (cancelActionText != null) {
       actions.add(
         // PlatformAlertDialogAction(
-        FlatButton(
+        TextButton(
           child: Text(cancelActionText),
           onPressed: () => Navigator.of(context).pop(false),
         ),
@@ -62,7 +62,7 @@ class PlatformAlertDialog extends PlatformWidget {
     }
     actions.add(
       // PlatformAlertDialogAction( --- NÃO ESTA RECONHECENDO A CLASSE
-      FlatButton(
+      TextButton(
         child: Text(defaultActionText),
         onPressed: () => Navigator.of(context).pop(true),
       ),
@@ -89,7 +89,7 @@ class PlatformAlertDialogAction extends PlatformWidget {
 
   @override
   Widget buildMaterialWidgel(BuildContext context) {
-    return FlatButton(
+    return TextButton(
       child: child,
       onPressed: onPressed,
     );

@@ -132,7 +132,7 @@ class _EditUserPageState extends State<EditUserPage> {
         elevation: 2.0,
         title: Text(widget.usuario == null ? 'Novo Usuario' : 'Editar Usuario'),
         actions: <Widget>[
-          FlatButton(
+          TextButton(
             child: Text(
               'Salvar',
               style: TextStyle(fontSize: 18, color: Colors.white),
