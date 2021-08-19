@@ -45,7 +45,7 @@ class _EmailSignInFormStatefulState extends State<EmailSignInFormStateful> {
       _isLoading = true;
     });
     try {
-      final auth = Provider.of<AuthBase>(context);
+      final auth = Provider.of<AuthBase>(context, listen: false);
       // await Future.delayed(Duration(seconds: 3)); // Debug LAG
       if (_formType == EmailSignInFormType.signIn) {
         await auth.signInWithEmailAndPassword(_email, _password);

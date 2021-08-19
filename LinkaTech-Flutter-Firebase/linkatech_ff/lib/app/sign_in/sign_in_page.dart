@@ -21,7 +21,7 @@ class SignInPage extends StatelessWidget {
   final bool isLoading;
 
   static Widget create(BuildContext context) {
-    final auth = Provider.of<AuthBase>(context);
+    final auth = Provider.of<AuthBase>(context, listen: false);
     return ChangeNotifierProvider<ValueNotifier<bool>>(
       create: (_) => ValueNotifier<bool>(false),
       child: Consumer<ValueNotifier<bool>>(

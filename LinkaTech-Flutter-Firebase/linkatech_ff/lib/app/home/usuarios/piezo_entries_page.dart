@@ -14,7 +14,7 @@ class PiezoEntriesPage extends StatelessWidget {
   final Usuario usuario;
 
   static Future<void> show(BuildContext context, Usuario usuario) async {
-    final Database database = Provider.of<Database>(context);
+    final Database database = Provider.of<Database>(context, listen: false);
     await Navigator.of(context).push(
       CupertinoPageRoute(
         fullscreenDialog: false,

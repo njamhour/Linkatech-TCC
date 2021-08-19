@@ -15,7 +15,7 @@ import 'package:provider/provider.dart';
 class UsersPage extends StatelessWidget {
   Future<void> _signOutAnonimo(BuildContext context) async {
     try {
-      final auth = Provider.of<AuthBase>(context);
+      final auth = Provider.of<AuthBase>(context, listen: false);
       await auth.signOut();
     } catch (e) {
       print(e.toString());
@@ -36,7 +36,7 @@ class UsersPage extends StatelessWidget {
 
   Future<void> _delete(BuildContext context, Usuario usuario) async {
     try {
-      final database = Provider.of<Database>(context);
+      final database = Provider.of<Database>(context, listen: false);
       await database.deleteUser(usuario);
     } on PlatformException catch (e) {
       PlatformExceptionAlertDialog(
@@ -72,7 +72,7 @@ class UsersPage extends StatelessWidget {
   }
 
   Widget _buildContents(BuildContext context) {
-    final database = Provider.of<Database>(context);
+    final database = Provider.of<Database>(context, listen: false);
     return StreamBuilder<List<Usuario>>(
       stream: database.usersStream(),
       builder: (context, snapshot) {

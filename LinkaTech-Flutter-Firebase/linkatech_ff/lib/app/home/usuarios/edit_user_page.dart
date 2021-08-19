@@ -13,7 +13,7 @@ class EditUserPage extends StatefulWidget {
   final Usuario usuario;
 
   static Future<void> show(BuildContext context, {Usuario usuario}) async {
-    final database = Provider.of<Database>(context);
+    final database = Provider.of<Database>(context, listen: false);
     await Navigator.of(context).push(
       MaterialPageRoute(
         builder: (context) => EditUserPage(
